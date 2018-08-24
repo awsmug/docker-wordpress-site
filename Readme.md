@@ -1,4 +1,7 @@
-# Simple Docker Webserver (Nginx, PHP, MariaDB, Xdebug)
+# Docker WordPress Site 
+*Nginx, PHP (Xdebug), MariaDB and WordPress*
+
+This is a docker template for WordPress developments for working on whole site projects.
 
 This webserver contains a basic configuration with
 
