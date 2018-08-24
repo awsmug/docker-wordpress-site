@@ -1,0 +1,26 @@
+##
+# WordPress
+##
+!wp-content/
+wp-content/*
+
+# We just want to save plugins and themes we are working on
+!wp-content/plugins
+!wp-content/themes
+
+# Remove WordPress own stuff
+wp-content/plugins/index.php
+wp-content/plugins/hello.php
+wp-content/plugins/akismet
+wp-content/themes/index.php
+wp-content/themes/twenty*/
+
+##
+# System
+##
+.DS_Store
+
+##
+# IDE
+##
+.idea
