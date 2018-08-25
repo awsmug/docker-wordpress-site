@@ -12,7 +12,6 @@ services:
       WP_USER: admin
       WP_PASS: password
       WP_URL: localhost
-      # WP_INSTALL: fresh
     volumes:
       - ./src:/var/www/html
     depends_on:
@@ -40,5 +39,19 @@ services:
       MYSQL_DATABASE: website
     volumes:
       - database:/var/lib/mysql
+  ##
+  # Optional
+  ##############################
+
+  ##
+  # PHPMyAdmin
+  ##
+
+  #phpmyadmin:
+  #  image: phpmyadmin/phpmyadmin
+  #  restart: always
+  #  ports:
+  #  - 8080:80
+
 volumes:
   database:
