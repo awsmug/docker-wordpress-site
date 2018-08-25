@@ -1,17 +1,5 @@
 version: '3.7'
 services:
-  web:
-    image: nginx:latest
-    ports:
-      - 80:80
-    volumes:
-      - ./conf/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
-      - www:/var/www/html
-  php:
-    build: ./conf/php
-    volumes:
-      - ./conf/php/php.ini:/usr/local/etc/php/php.ini
-      - www:/var/www/html
   wp:
     image: mahype/wordpress:latest
     environment:
@@ -24,10 +12,27 @@ services:
       WP_USER: admin
       WP_PASS: password
       WP_URL: localhost
-      WP_INSTALL: fresh
+      # WP_INSTALL: fresh
     volumes:
-      - ./plugins:/var/www/plugins
-      - www:/var/www/html
+      - ./src:/var/www/html
+    depends_on:
+      - db
+  web:
+    image: nginx:latest
+    ports:
+      - 80:80
+    volumes:
+      - ./conf/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./src:/var/www/html
+    depends_on:
+      - wp
+  php:
+    build: ./conf/php
+    volumes:
+      - ./conf/php/php.ini:/usr/local/etc/php/php.ini
+      - ./src:/var/www/html
+    depends_on:
+      - wp
   db:
     image: mariadb
     environment:
@@ -35,11 +40,5 @@ services:
       MYSQL_DATABASE: website
     volumes:
       - database:/var/lib/mysql
-  phpmyadmin:
-      image: phpmyadmin/phpmyadmin
-      restart: always
-      ports:
-        - 8080:80
 volumes:
   database:
-  www:

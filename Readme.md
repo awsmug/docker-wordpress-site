@@ -15,8 +15,8 @@ This webserver contains a basic configuration with
 ### General setup for your WordPress project
 
 Copy the files from this repository to an empty directory where you would like to develop your WordPress project and
-run `docker-compose up`. After that WordPress will be installed and the wp-content directory will be mapped to 
-`wp-content` in the directory where you can leave your project files. 
+run `docker-compose up`. After that WordPress will be installed and WordPress root directory will be mapped to 
+`src` folder in the directory where you can leave your project files.
 
 Your will reach your server under `http://localhost/` with a ready installed WordPress.
 
